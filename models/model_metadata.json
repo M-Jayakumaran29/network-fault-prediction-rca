@@ -1,0 +1,22 @@
+{
+  "window_size": 10,
+  "horizon": 1,
+  "feature_columns": [
+    "icmp_loss",
+    "icmp_response_time",
+    "throughput_bps",
+    "discards_total",
+    "errors_total",
+    "oper_status_up_frac"
+  ],
+  "scaled_feature_columns": [
+    "icmp_loss_scaled",
+    "icmp_response_time_scaled",
+    "throughput_bps_scaled",
+    "discards_total_scaled",
+    "errors_total_scaled",
+    "oper_status_up_frac_scaled"
+  ],
+  "n_features": 6,
+  "train_fault_frac": 0.5547116355471163
+}

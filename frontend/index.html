@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Fault Prediction &amp; Root Cause Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <h1>AI-Based Network Fault Prediction &amp; Root Cause Analysis</h1>
+    <span class="subtitle">Live replay over held-out LCORE-D test data</span>
+  </div>
+  <div class="topbar-right">
+    <label for="device-select">Device</label>
+    <select id="device-select"></select>
+    <button id="btn-step">Step</button>
+    <button id="btn-play" class="primary">Play</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+</header>
+
+<div id="status-banner" class="status-banner status-normal">
+  <span id="status-text">NORMAL</span>
+  <span id="status-meta"></span>
+</div>
+
+<main class="grid">
+
+  <section class="card metrics-card">
+    <h2>Current Network Metrics</h2>
+    <div class="metrics-grid" id="metrics-grid">
+      <div class="metric"><div class="metric-label">Packet Loss</div><div class="metric-value" id="m-loss">--</div></div>
+      <div class="metric"><div class="metric-label">Latency</div><div class="metric-value" id="m-latency">--</div></div>
+      <div class="metric"><div class="metric-label">Throughput</div><div class="metric-value" id="m-throughput">--</div></div>
+      <div class="metric"><div class="metric-label">Discards</div><div class="metric-value" id="m-discards">--</div></div>
+      <div class="metric"><div class="metric-label">Errors</div><div class="metric-value" id="m-errors">--</div></div>
+      <div class="metric"><div class="metric-label">Oper. Status</div><div class="metric-value" id="m-operstatus">--</div></div>
+    </div>
+  </section>
+
+  <section class="card prediction-card">
+    <h2>Objective 1 &middot; LSTM Fault Prediction</h2>
+    <div class="prob-bar-wrap">
+      <div class="prob-bar"><div id="prob-fill" class="prob-fill"></div><div id="threshold-marker" class="threshold-marker"></div></div>
+      <div class="prob-labels"><span id="prob-value">0%</span><span id="threshold-value">threshold: --</span></div>
+    </div>
+    <div class="kv"><span>Prediction</span><span id="pred-result">--</span></div>
+    <div class="kv"><span>Ground-truth label (now)</span><span id="pred-truth">--</span></div>
+    <div class="kv"><span>Ground-truth label (at predicted time)</span><span id="pred-truth-target">--</span></div>
+  </section>
+
+  <section class="card rca-card">
+    <h2>Objective 2 &middot; Root Cause Analysis <span class="tag" id="rca-tag">rule-based, no ML</span></h2>
+    <div id="rca-empty" class="empty-state">No fault currently predicted.</div>
+    <div id="rca-body" class="hidden">
+      <div class="kv"><span>Affected device</span><span id="rca-device">--</span></div>
+      <div class="kv"><span>Affected interface</span><span id="rca-interface">--</span></div>
+      <div class="kv"><span>Probable fault type</span><span id="rca-faulttype">--</span></div>
+      <div class="kv"><span>Root cause</span><span id="rca-rootcause">--</span></div>
+      <div class="kv"><span>Method</span><span id="rca-method">--</span></div>
+      <div class="kv"><span>Top candidates</span><span id="rca-probs">--</span></div>
+      <div class="kv"><span>Confidence</span><span id="rca-confidence">--</span></div>
+      <div class="evidence-label">Evidence</div>
+      <ul id="rca-evidence"></ul>
+    </div>
+  </section>
+
+  <section class="card topology-card">
+    <h2>Network Topology</h2>
+    <svg id="topology-svg" viewBox="0 0 640 260"></svg>
+  </section>
+
+  <section class="card charts-card">
+    <h2>History</h2>
+    <div class="charts-grid">
+      <div class="chart-wrap"><canvas id="chart-loss"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-latency"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-throughput"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-prob"></canvas></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

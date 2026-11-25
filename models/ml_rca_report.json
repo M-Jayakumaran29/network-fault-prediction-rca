@@ -1,0 +1,260 @@
+{
+  "classes_train": [
+    "icmp_blocked_firewall",
+    "line_card_failure",
+    "link_failure",
+    "misconfiguration",
+    "multiple_link_failure",
+    "node_failure",
+    "routing_misconfiguration",
+    "transient_fault"
+  ],
+  "models": {
+    "naive_bayes": {
+      "val_macro_f1": 0.05439668041812725,
+      "val_accuracy": 0.14087759815242495
+    },
+    "random_forest": {
+      "val_macro_f1": 0.1233603832684127,
+      "val_accuracy": 0.21016166281755197
+    }
+  },
+  "selected": "random_forest",
+  "test": {
+    "accuracy": 0.31413612565445026,
+    "macro_f1_present_classes": 0.20006293363825126,
+    "n_rows": 382,
+    "n_events": 7,
+    "report": {
+      "icmp_blocked_firewall": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 23.0
+      },
+      "line_card_failure": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "link_failure": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "misconfiguration": {
+        "precision": 0.18518518518518517,
+        "recall": 0.11627906976744186,
+        "f1-score": 0.14285714285714285,
+        "support": 43.0
+      },
+      "multiple_link_failure": {
+        "precision": 0.7247706422018348,
+        "recall": 0.4817073170731707,
+        "f1-score": 0.5787545787545788,
+        "support": 164.0
+      },
+      "node_failure": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "routing_misconfiguration": {
+        "precision": 0.1509433962264151,
+        "recall": 0.08695652173913043,
+        "f1-score": 0.1103448275862069,
+        "support": 92.0
+      },
+      "snmp_agent_failure": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 27.0
+      },
+      "transient_fault": {
+        "precision": 0.23529411764705882,
+        "recall": 0.8484848484848485,
+        "f1-score": 0.3684210526315789,
+        "support": 33.0
+      },
+      "accuracy": 0.31413612565445026,
+      "macro avg": {
+        "precision": 0.1440214823622771,
+        "recall": 0.17038086189606572,
+        "f1-score": 0.1333752890921675,
+        "support": 382.0
+      },
+      "weighted avg": {
+        "precision": 0.3886828445530026,
+        "recall": 0.31413612565445026,
+        "f1-score": 0.3229534736475948,
+        "support": 382.0
+      }
+    },
+    "labels": [
+      "icmp_blocked_firewall",
+      "line_card_failure",
+      "link_failure",
+      "misconfiguration",
+      "multiple_link_failure",
+      "node_failure",
+      "routing_misconfiguration",
+      "snmp_agent_failure",
+      "transient_fault"
+    ],
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        20
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        5,
+        5,
+        4,
+        0,
+        6,
+        0,
+        20
+      ],
+      [
+        2,
+        0,
+        23,
+        3,
+        79,
+        9,
+        38,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        11,
+        8,
+        13,
+        25,
+        0,
+        8,
+        0,
+        18
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        1,
+        0,
+        23
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        28
+      ]
+    ],
+    "rules_accuracy": 0.41361256544502617,
+    "rules_macro_f1_present_classes": 0.1101813110181311
+  },
+  "grouped_cv": {
+    "accuracy": 0.2204652163140607,
+    "macro_f1": 0.15877502691398587,
+    "majority_class_share": 0.18867924528301888,
+    "n_classes": 9
+  },
+  "top_features": [
+    [
+      "abnormal_count10",
+      0.21054759976827614
+    ],
+    [
+      "latency_mean5",
+      0.1732107963115686
+    ],
+    [
+      "n_other_abnormal",
+      0.1583116865161042
+    ],
+    [
+      "loss_mean5",
+      0.11893548834696786
+    ],
+    [
+      "errors_max5",
+      0.058637646842562945
+    ],
+    [
+      "loss_trend5",
+      0.05631350871047074
+    ],
+    [
+      "downstream_dependents",
+      0.03419917934927013
+    ],
+    [
+      "latency_ratio",
+      0.02901408786651131
+    ],
+    [
+      "hop_to_server",
+      0.028364691957174545
+    ],
+    [
+      "icmp_response_time",
+      0.02547635053492598
+    ]
+  ]
+}
